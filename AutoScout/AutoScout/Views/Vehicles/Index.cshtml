@@ -95,3 +95,23 @@
 
     </table>
 </div>
+
+@{ 
+    var count = 0;
+}
+<div class="row">
+    @foreach (var item in Model)
+    {      
+        @Html.Partial("ShortcutListItem", item)
+    }
+</div>
+
+
+<script type="text/javascript">
+    function VehicleResultsViewModel() {
+        var self = this;
+        var itemCount = @Model.Count();
+    }
+    ko.applyBindings(new vehicleResultsViewModel());
+
+</script>
