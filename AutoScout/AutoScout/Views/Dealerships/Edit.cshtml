@@ -1,0 +1,145 @@
+﻿@using Newtonsoft.Json;
+
+@model AutoScout.Models.Dealership
+
+@{
+    ViewBag.Title = "Edit";
+    var info = ViewBag.EditManager;
+}
+<div id="mainContent" class="col-md-offset-1 container-fluid">
+    <h2>Edit Account Info</h2>
+    
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Dealership</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CompanyName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ZipCode, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ZipCode, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ZipCode, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FaxNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.FaxNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FaxNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Notes, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-offset-2">
+            <p>@ViewBag.ResponseMessage</p>
+        </div>
+        
+    }
+
+</div>
+
+<script>
+    function DealershipViewModel() {
+        var self = this;
+        
+        self.Dealership = @Html.Raw(JsonConvert.SerializeObject(info, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }));
+
+        self.Id = self.Dealership.Id;
+        self.CompanyName = ko.observable(self.Dealership.CompanyName);
+        self.Email = ko.observable(self.Dealership.Email);
+        self.City = ko.observable(self.Dealership.City);
+        self.State = ko.observable(self.Dealership.State);
+        self.ZipCode = ko.observable(self.Dealership.ZipCode);
+        self.PhoneNumber = ko.observable(self.Dealership.PhoneNumber);
+        self.FaxNumber = ko.observable(self.Dealership.FaxNumber);
+        self.Notes = ko.observable(self.Dealership.Notes);
+
+        self.EditDealershipInfo = function () {
+
+            var Dealership = {
+                Id: self.Id,
+                CompanyName: self.CompanyName(),
+                Email: self.Email(),
+                City: self.City(),
+                State: self.State(),
+                ZipCode: self.ZipCode(),
+                PhoneNumber: self.PhoneNumber(),
+                FaxNumber: self.FaxNumber(),
+                Notes: self.Notes()
+            }
+
+            $.ajax({
+                url: "",
+                data: JSON.stringify(Dealership),
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    alert(data);
+                }
+            });
+        }
+
+    }
+    ko.applyBindings(new DealershipViewModel());
+
+</script>

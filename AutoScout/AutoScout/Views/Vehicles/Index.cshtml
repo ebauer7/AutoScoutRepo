@@ -1,0 +1,97 @@
+﻿@model IEnumerable<AutoScout.Models.Vehicle>
+
+@{
+    ViewBag.Title = "Index";
+    var companyName = ViewBag.CompanyName;
+}
+<div class="col-md-offset-1">
+    @if (Request.IsAuthenticated)
+    {
+        <h2>@companyName Vehicle Inventory</h2>
+    }
+    else
+    {
+        <h2>AutoScout Vehicle Inventory</h2>
+    }
+
+    @if (Request.IsAuthenticated)
+    {
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+    }
+    <table class="table">
+        <tr>
+            <th>
+                VIN
+            </th>
+            <th>
+                Exterior Color
+            </th>
+            <th>
+                Interior Color
+            </th>
+            <th>
+                Make
+            </th>
+            <th>
+                Model
+            </th>
+            <th>
+                Year
+            </th>
+            <th>
+                Price
+            </th>
+            @if (Request.IsAuthenticated)
+            {
+                <th>
+                    Actions
+                </th>
+            }
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VIN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExteriorColor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InteriorColor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Make)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                @if (Request.IsAuthenticated)
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+                        @Html.ActionLink("Add Image", "AddImage", new { id = item.Id }, null)
+                    </td>
+                }else
+                {
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = item.Id })
+                    </td>
+                }
+            </tr>
+        }
+
+    </table>
+</div>

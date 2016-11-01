@@ -1,0 +1,144 @@
+﻿@model AutoScout.Models.Vehicle
+
+@{
+    ViewBag.Title = "Details";
+    var images = ViewBag.Images;
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>@ViewBag.stringDescription</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Dealership.CompanyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dealership.CompanyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VIN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mileage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mileage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExteriorColor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExteriorColor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InteriorColor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InteriorColor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Make)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Make)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Transmission)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Transmission)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Style)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Style)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Condition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Condition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CylinderNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CylinderNumber)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <h4>Images</h4>
+    <hr />
+    <table>
+        <tr>
+            <td>
+                @foreach (var item in ViewBag.Images)
+                {
+
+                    var base64 = Convert.ToBase64String(item.ImageBytes);
+                    var imgSrc = string.Format("data:image/png;base64,{0}", base64);
+
+                    <img src="@imgSrc" style="max-width:200px;" />
+                }
+            </td>
+        </tr>
+    </table>
+
+</div>
+<br />
+<br />
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

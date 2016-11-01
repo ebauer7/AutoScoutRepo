@@ -1,0 +1,14 @@
+﻿@model AutoScout.Models.Vehicle
+
+@{
+    var image = ViewBag.MainImage;
+
+    var base64 = Convert.ToBase64String(image.ImageBytes);
+    var imgSrc = string.Format("data:image/png;base64,{0}", base64);
+    
+}
+<div class="container-fluid">
+    <img src="@imgSrc" class="img-rounded img-responsive" />
+    <p>@Model.Year @Model.Style @Model.Price</p>
+</div>
+

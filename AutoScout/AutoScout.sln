@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoScout", "AutoScout\AutoScout.csproj", "{63F5BEE0-46FF-4C37-9AD5-FBE467A6F48C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoScout.Tests", "AutoScout.Tests\AutoScout.Tests.csproj", "{9EC6F19B-13F2-4BD6-861D-435B3BD46CFD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{63F5BEE0-46FF-4C37-9AD5-FBE467A6F48C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63F5BEE0-46FF-4C37-9AD5-FBE467A6F48C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63F5BEE0-46FF-4C37-9AD5-FBE467A6F48C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63F5BEE0-46FF-4C37-9AD5-FBE467A6F48C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EC6F19B-13F2-4BD6-861D-435B3BD46CFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EC6F19B-13F2-4BD6-861D-435B3BD46CFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EC6F19B-13F2-4BD6-861D-435B3BD46CFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EC6F19B-13F2-4BD6-861D-435B3BD46CFD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
