@@ -12,6 +12,9 @@ namespace AutoScout.Models
     {
         public int Id { get; set; }
 
+        //DateTime set on vehicle creation.
+        public DateTime DateCreated { get; set; }
+
         [Display(Name = "VIN Number")]
         public string VIN { get; set; }
 
@@ -65,6 +68,7 @@ namespace AutoScout.Models
             var service = new DealershipAccountService(context);
             var currentUserId = service.GetCurrentUserDealershipIdFromIdentity();
             this.DealershipId = currentUserId;
+            DateCreated = DateTime.UtcNow;
         }
 
     }
